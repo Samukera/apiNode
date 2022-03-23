@@ -6,7 +6,7 @@ API desenvolvida no intuito de testar conhecimentos e praticá-los
 
 >**INSTALAÇÃO**
 
-yarn install
+>*yarn install*
 
 >**COMEÇANDO O PROJETO**
 
@@ -18,7 +18,7 @@ Para extrair o máximo da API algumas configurações devem ser feitas:
 
 >**PARA RODAR O SERVIDOR**
 
-*yarn start*
+>*yarn start*
 
 >**ROTAS**
 

@@ -1,0 +1,3 @@
+DROP TABLE client;
+DROP TABLE city;
+DROP TABLE state;

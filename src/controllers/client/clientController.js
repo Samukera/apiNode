@@ -8,6 +8,14 @@ export default {
             const { clientId, name } = req.query;
             const resultClients = await ClientModel.findClient(clientId, name);
 
+            if(resultClients.length <= 0){
+                return res.status(400).send({
+                status: 'bad request',
+                message: "Client don't exists. Check your datas.",
+                payload: resultClients,
+            });
+            }
+
             return res.status(200).send({
                 status: 'success',
                 message: 'Client returned successfully',
@@ -57,7 +65,15 @@ export default {
     delete: async (req, res) => {
         try{
             const { clientId } = req.params;
-            const resultClients = ClientModel.deleteClient(clientId);
+            const resultClients = await ClientModel.deleteClient(clientId);
+
+            if(resultClients.length <= 0){
+                return res.status(400).send({
+                status: 'Bad Request',
+                message: "Client don't exists. Check your id.",
+                payload: resultClients,
+            });
+            }
 
             return res.status(200).json({
                 status: 'success',
@@ -79,6 +95,14 @@ export default {
             const { name } = req.body;
             
             const resultClients = await ClientModel.changeClientName(clientId, name);
+
+            if(resultClients.length <= 0){
+                return res.status(400).send({
+                status: 'Bad Request',
+                message: "Client don't exists. Check your id.",
+                payload: resultClients,
+            });
+            }
 
             return res.status(200).json({
                 status: 'success',

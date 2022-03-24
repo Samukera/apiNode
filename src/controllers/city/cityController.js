@@ -10,6 +10,14 @@ export default {
 
             const resultCity = await CityModel.findCity(name, stateId);
 
+            if(resultCity.length <= 0){
+                return res.status(400).send({
+                status: 'Bad Request',
+                message: "City don't exists. Check your datas.",
+                payload: resultCity,
+            });
+            }
+
             return res.status(200).send({
                 status: 'success',
                 message: 'City returned successfully',

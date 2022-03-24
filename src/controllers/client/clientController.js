@@ -69,7 +69,7 @@ export default {
 
             if(resultClients.length <= 0){
                 return res.status(400).send({
-                status: 'Bad Request',
+                status: 'bad request',
                 message: "Client don't exists. Check your id.",
                 payload: resultClients,
             });
@@ -98,7 +98,7 @@ export default {
 
             if(resultClients.length <= 0){
                 return res.status(400).send({
-                status: 'Bad Request',
+                status: 'bad request',
                 message: "Client don't exists. Check your id.",
                 payload: resultClients,
             });

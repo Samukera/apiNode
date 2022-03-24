@@ -12,7 +12,7 @@ export default {
 
             if(resultCity.length <= 0){
                 return res.status(400).send({
-                status: 'Bad Request',
+                status: 'bad request',
                 message: "City don't exists. Check your datas.",
                 payload: resultCity,
             });

@@ -1,92 +1,100 @@
-***APIREST***
+**_APIREST - Samuel Rech Cassanego_**
 
 API desenvolvida no intuito de testar conhecimentos e praticá-los
 
->**Tecnologias usadas: NodeJS & Postgresql**
+> **Tecnologias usadas: NodeJS & Postgresql**
 
-***INSTALAÇÃO***
+**_INSTALAÇÃO_**
 
->*yarn install*
+> _yarn install_
 
-***COMEÇANDO O PROJETO***
+**_COMEÇANDO O PROJETO_**
 
 Para extrair o máximo da API algumas configurações devem ser feitas:
 
->**copiar os dados do arquivo .env.example para um .env e preencher com os dados corretos.**
+> **copiar os dados do arquivo .env.example para um .env e preencher com os dados corretos.**
 
->**rodar os scripts do banco de dados.**
+> **rodar os scripts do banco de dados.**
 
->**importar a collection para o Insomnia.**
+> **importar a collection para o Insomnia.**
 
-***PARA RODAR O SERVIDOR***
+**_PARA RODAR O SERVIDOR_**
 
->*yarn start*
+> _yarn start_
 
-***ROTAS***
+**_ROTAS_**
 
 **Rotas Relacionadas às Cidades**
 
->Método GET - Get City with Filters
+> Método GET - Get City with Filters
+
     URL: http://localhost:3000/cities/
 
 (É possível filtrar as cidades via nome ou id do estado e também ambos, para isso basta enviar o campo desejado e o seu dado via query. OBS: caso não especifique nenhum filtro, serão retornadas todas cidades)
 
->exemplo: http://localhost:3000/cities/?name=Santa%20Maria&stateId=20
+> exemplo: http://localhost:3000/cities/?name=Santa%20Maria&stateId=20
 
->Método POST - Create City
+> Método POST - Create City
+
     URL: http://localhost:3000/cities/createCity
 
 (É esperado que se envie no body um json com os campos: name, stateId)
 
->exemplo:
->    {
->     “name”: “Canoas”,
->     “stateId”: 20
->    }
+> exemplo:
+> {
+> “name”: “Canoas”,
+> “stateId”: 20
+> }
 
 **Rotas relacionadas aos clientes**
 
->Método POST- Create Cliente
-    URL: http://localhost:3000/clients/createClient
-(É esperado que se envie no body um json com os campos: name, genre, bornIn, age, cityId)
->exemplo: 
->    {
->    "name": "Usuário 2",
->    "genre": "M",
->    "bornIn": "15-06-2006",
->    "age": 15,
->    "cityId": 1
->    }
+> Método POST- Create Cliente
 
->Método GET - Get Client With Filters
+    URL: http://localhost:3000/clients/createClient
+
+(É esperado que se envie no body um json com os campos: name, genre, bornIn, age, cityId)
+
+> exemplo:
+> {
+> "name": "Usuário 2",
+> "genre": "M",
+> "bornIn": "15-06-2006",
+> "age": 15,
+> "cityId": 1
+> }
+
+> Método GET - Get Client With Filters
+
     URL: http://localhost:3000/clients/
+
 (É possível filtrar os clientes via id ou nome e também ambos, para isso basta enviar o campo desejado e o seu dado via query. OBS: caso não especifique nenhum filtro, serão retornados todos clientes)
 
->exemplo: http://localhost:3000/clients/?clientId=1&name=Samuel%20Rech
+> exemplo: http://localhost:3000/clients/?clientId=1&name=Samuel%20Rech
 
->Método DEL - Remove Client
-URL: http://localhost:3000/clients/$clientId
-(Deleta o cliente a partir do ‘clientId’ fornecido)
+> Método DEL - Remove Client
+> URL: http://localhost:3000/clients/$clientId
+> (Deleta o cliente a partir do ‘clientId’ fornecido)
 
->exemplo: http://localhost:3000/clients/1
+> exemplo: http://localhost:3000/clients/1
 
+> Método PUT - Change Client Name
 
->Método PUT - Change Client Name
     URL: http://localhost:3000/clients/$clientId/changeClientName
+
 (Atualiza o nome do cliente a partir do id fornecido na URL, o nome deve ser enviado via json pelo body)
 
->exemplo JSON: 
+> exemplo JSON:
 >
->{
+> {
 > “name”: “Fulano Ciclano de Beltrano”
->}
+> }
 >
->exemplo URL: http://localhost:3000/clients/$clientId/changeClientName
+> exemplo URL: http://localhost:3000/clients/$clientId/changeClientName
 
-
-***OBS: Os estados já estão todos populados no banco de dados, é possível olhar o respectivo Id para cada estado.***
+**_OBS: Os estados já estão todos populados no banco de dados, é possível olhar o respectivo Id para cada estado._**
 
 Tabela de estados:
+
 >        {
 >            "stateId": 1,
 >            "name": "Acre",

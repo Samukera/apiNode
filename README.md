@@ -1,51 +1,222 @@
-Objetivo
+>**APIREST**
 
-Nosso objetivo com este passo do processo de recrutamento é conhecer melhor as suas habilidades técnicas.
+API desenvolvida no intuito de testar conhecimentos e praticá-los
 
-Conhecendo você melhor, poderemos selecionar quais desafios já podemos passar para você e quais precisaremos preparar você melhor para enfrentá-los.
-Requisitos da entrega
+>**Tecnologias usadas: NodeJS & Postgresql**
 
-Nesta estapa esperamos que você construa o código que contemple as seguintes operações expostas como endpoints REST para:
+>**INSTALAÇÃO**
 
-    Cadastrar cidade - POST Create City - OK
-    Cadastrar cliente - POST Create Client - OK
-    Consultar cidade pelo nome - GET City with filters OK
-    Consultar cidade pelo estado - GET City with filters OK
-    Consultar cliente pelo nome - GET Client with filters OK
-    Consultar cliente pelo Id - GET Client with filters OK
-    Remover cliente - DELETE Client OK
-    Alterar o nome do cliente - PUT Client name OK
+>*yarn install*
 
-Considere o cadastro com dados básicos:
+>**COMEÇANDO O PROJETO**
 
-    Cidades: nome e estado
-    Cliente: nome completo, sexo, data de nascimento, idade e cidade onde mora.
+Para extrair o máximo da API algumas configurações devem ser feitas:
 
-Cenário
+>copiar os dados do arquivo .env.example para um .env e preencher com os dados corretos.
+>rodar os scripts do banco de dados.
+>importar a collection para o Insomnia.
 
-No nosso dia-a-dia trabalhamos com o desenvolvimento de microserviços desenvolvidos utilizando Node. Buscamos automação dos processos de garantia da qualidade, testes, deployment e release.
-Critérios
-Avaliação
+>**PARA RODAR O SERVIDOR**
 
-A avaliação será feita da seguinte forma:
+>*yarn start*
 
-    Vamos analisar e compilar o seu código;
-    Rodar sua aplicação e executar testes para validar o atendimento funcional dos items acima;
-    Verificar se o seu código é limpo (Clean Code), fácil de entender e de dar manutenção;
-    Durante entrevista, simularemos uma revisão do seu código, percorremos o código junto com você para discutirmos sobre suas decisões de implementação, os pontos positivos e negativos;
-    O saldo entre o que for positivo e o que for negativo vai determinar a recomendação do ponto de vista técnico ou não de sua contratação, se faltar pouco para atingir uma recomendação positiva, daremos um prazo para você corrigir e retornar;
+>**ROTAS**
 
-Requisitos Obrigatórios:
+**Rotas relacionadas aos clientes**
 
-    Operações acima funcionando sem erros
-    Código válido, estruturado e organizado para que possamos testar sua aplicação
+>Método POST- Create Cliente
+    URL: http://localhost:3000/clients/createClient
+(É esperado que se envie no body um json com os campos: name, genre, bornIn, age, cityId)
+>exemplo: 
+>    {
+>    "name": "Usuário 2",
+>    "genre": "M",
+>    "bornIn": "15-06-2006",
+>    "age": 15,
+>    "cityId": 1
+>    }
 
-Utilização de Node 10+ o resto é por sua conta escolher.
+>Método GET - Get Client With Filters
+    URL: http://localhost:3000/clients/
+(É possível filtrar os clientes via id ou nome e também ambos, para isso basta enviar o campo desejado e o seu dado via query. OBS: caso não especifique nenhum filtro, serão retornados todos clientes)
 
-Dicas:
+>exemplo: http://localhost:3000/clients/?clientId=1&name=Samuel%20Rech
 
-    Tenha em mente que o seu avaliador irá executar o código antes de falar com você;
-    Procure fazer uma entrega simples mas consistente, usando a experiência e conhecimento adquiridos durante sua carreira;
-    Não se preocupe em entregar algo extremamente completo ou rebuscado, não vamos usar este código em produção;
-    Tudo será avaliado, dê o seu melhor!
-    Evite fazer Pull Request ou Fork deste repositório.
+>Método DEL - Remove Client
+URL: http://localhost:3000/clients/$clientId
+(Deleta o cliente a partir do ‘clientId’ fornecido)
+
+>exemplo: http://localhost:3000/clients/1
+
+
+>Método PUT - Change Client Name
+    URL: http://localhost:3000/clients/$clientId/changeClientName
+(Atualiza o nome do cliente a partir do id fornecido na URL, o nome deve ser enviado via json pelo body)
+
+>exemplo JSON: 
+>
+>{
+> “name”: “Fulano Ciclano de Beltrano”
+>}
+>
+>exemplo URL: http://localhost:3000/clients/$clientId/changeClientName
+
+
+**Rotas Relacionadas às Cidades**
+
+>Método GET - Get City with Filters
+    URL: http://localhost:3000/cities/
+
+(É possível filtrar as cidades via nome ou id do estado e também ambos, para isso basta enviar o campo desejado e o seu dado via query. OBS: caso não especifique nenhum filtro, serão retornadas todas cidades)
+
+>exemplo: http://localhost:3000/cities/?name=Santa%20Maria&stateId=20
+
+>Método POST - Create City
+    URL: http://localhost:3000/cities/createCity
+
+(É esperado que se envie no body um json com os campos: name, stateId)
+
+>exemplo:
+>    {
+>     “name”: “Canoas”,
+>     “stateId”: 20
+>    }
+
+>*OBS: Os estados já estão todos populados no banco de dados, é possível olhar o respectivo Id para cada estado.*
+
+Tabela de estados:
+>        {
+>            "stateId": 1,
+>            "name": "Acre",
+>            "uf": "AC"
+>        },
+>        {
+>            "stateId": 2,
+>            "name": "Alagoas",
+>            "uf": "AL"
+>        },
+>        {
+>            "stateId": 3,
+>            "name": "Amapá",
+>            "uf": "AP"
+>        },
+>        {
+>            "stateId": 4,
+>            "name": "Amazonas",
+>            "uf": "AM"
+>        },
+>        {
+>            "stateId": 5,
+>            "name": "Bahia",
+>            "uf": "BA"
+>        },
+>        {
+>            "stateId": 6,
+>            "name": "Ceará",
+>            "uf": "CE"
+>        },
+>        {
+>            "stateId": 7,
+>            "name": "Espírito Santo",
+>            "uf": "ES"
+>        },
+>        {
+>            "stateId": 8,
+>            "name": "Goiás",
+>            "uf": "GO"
+>        },
+>        {
+>            "stateId": 9,
+>            "name": "Maranhão",
+>            "uf": "MA"
+>        },
+>        {
+>            "stateId": 10,
+>            "name": "Mato Grosso",
+>            "uf": "MT"
+>        },
+>        {
+>            "stateId": 11,
+>            "name": "Mato Grosso do Sul",
+>            "uf": "MS"
+>        },
+>        {
+>            "stateId": 12,
+>            "name": "Minas Gerais",
+>            "uf": "MG"
+>        },
+>        {
+>            "stateId": 13,
+>            "name": "Pará",
+>            "uf": "PA"
+>        },
+>        {
+>            "stateId": 14,
+>            "name": "Paraíba",
+>            "uf": "PB"
+>        },
+>        {
+>            "stateId": 15,
+>            "name": "Paraná",
+>            "uf": "PR"
+>        },
+>        {
+>            "stateId": 16,
+>            "name": "Pernambuco",
+>            "uf": "PE"
+>        },
+>        {
+>            "stateId": 17,
+>            "name": "Piauí",
+>            "uf": "PI"
+>        },
+>        {
+>            "stateId": 18,
+>            "name": "Rio de Janeiro",
+>            "uf": "RJ"
+>        },
+>        {
+>            "stateId": 19,
+>            "name": "Rio Grande do Norte",
+>            "uf": "RN"
+>        },
+>        {
+>            "stateId": 20,
+>            "name": "Rio Grande do Sul",
+>            "uf": "RS"
+>       },
+>        {
+>            "stateId": 21,
+>            "name": "Rondônia",
+>            "uf": "RO"
+>        },
+>        {
+>            "stateId": 22,
+>            "name": "Roraima",
+>            "uf": "RR"
+>        },
+>        {
+>            "stateId": 23,
+>            "name": "Santa Catarina",
+>            "uf": "SC"
+>        },
+>        {
+>            "stateId": 24,
+>            "name": "São Paulo",
+>            "uf": "SP"
+>        },
+>        {
+>            "stateId": 25,
+>            "name": "Sergipe",
+>            "uf": "SE"
+>        },
+>        {
+>            "stateId": 26,
+>            "name": "Tocantins",
+>            "uf": "TO"
+>        },
+>        {
+>            "stateId": 27,
+>            "name": "Distrito Federal",
+>            "uf": "DF"
+>        }

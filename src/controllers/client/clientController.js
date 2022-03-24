@@ -26,7 +26,6 @@ export default {
             return res.status(500).json({
                 status: 'error',
                 message: err.message || 'Error while find all clients',
-                //message: 'Error while find all clients',
                 payload: [err],
             });
         }
@@ -42,7 +41,6 @@ export default {
                 return res.status(400).send({
                     status: 'fail',
                     message: `Error in request's body ['${errors[0].property}']: ${errors[0].message}`,
-                    //payload: null
                 })
             }else{
                 const resultClients = await ClientModel.createClient(data);
